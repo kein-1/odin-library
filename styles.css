@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+    height: 100%;
+}
 
 h4{
     font-size: 1rem;
@@ -9,8 +13,42 @@ h4{
     background-color: bisque;
 }
 
+.main-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 50px 150px;
+    gap: 25px;
+}
+
+.book-grid{
+    display: grid;
+    grid-template-columns: repeat(3,200px);
+    grid-template-rows:auto;
+    gap: 15px;
+}
+
+.book-cont{
+    color: purple;
+    border: 1px solid pink;
+    /* height: 150px;
+    width: 150px; */
+    text-align: center;
+}
+
+
+.footer{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    width: 100%;
+}
+
 .form-cont{
-    display: inline;
+    display: none;
     position: absolute;
     width: 300px;
     height: 300px;
@@ -28,8 +66,9 @@ h4{
     gap: 10px;
     padding: 25px;
     border: 1px solid black;
-    opacity: 1 !important;
+    /* opacity: 1 !important; */
     background-color: wheat;
+    width: 100%;
 }
 
 input {
@@ -43,3 +82,4 @@ label {
     /* display: inline; */
     width: 100%;
 }
+
