@@ -6,13 +6,16 @@ const addBtn = document.getElementById("addBtn")
 const formBox = document.getElementById("form")
 
 const mainCont = document.getElementById("main-cont")
-const bookCont = document.getElementById("book-grid")
+const bookGrid = document.getElementById("book-grid")
+const bookCont = Array.from(document.getElementsByClassName("book-cont"))
 
 const bookName = document.getElementById("name")
 const author = document.getElementById("author")
 const pages = document.getElementById("pages")
-const readStatus = document.getElementById("read-status")
+const readStatus = document.getElementById("toggle")
 
+const modalColors = "rgba(0,0,0,0.1)"
+const modalColors2 = "rgba(0,0,0,0.75)"
 
 
 let library = []
@@ -33,8 +36,22 @@ class Book {
 
 formBtn.onclick = () => {
     formCont.style.display = "flex"
-    libheader.style.backgroundColor = "rgba(0,0,0,0.75)"
-    mainCont.style.backgroundColor = "rgba(0,0,0,0.75)"
+    libheader.style.backgroundColor = modalColors2
+    mainCont.style.backgroundColor = modalColors2
+    formBtn.style.backgroundColor = modalColors
+    let children = Array.from(bookGrid.children)
+        children.forEach( element => {
+        element.classList.add("bookModalClass")
+        element.classList.remove("book-cont")
+    })
+    
+
+  // const bookCont = Array.from(document.getElementsByClassName("book-cont"))
+    // bookCont.forEach(element => {
+    //   console.log("THIS RAN")
+    //   element.style.backgroundColor = "rgba(0,0,0,0.75)"
+    // })
+    
 }
 
 function display() {
@@ -44,21 +61,35 @@ function display() {
         let name = document.createElement("h3")
         let author = document.createElement("h3")
         let pages  = document.createElement("h3")
+        // let readStatus  = document.createElement("div")
         let readS = document.createElement("h3")
-
+        
+        // This is to add toggle button to our grid item 
+        // let readS = document.createElement("input")
+        // let readS2 = document.createElement("label")
+        
+        
+        // readStatus.setAttribute("class", "read-status")
+        // readS.setAttribute("class", "switch")
+        // readS2.setAttribute("class", "checkbox")
+        
         book.setAttribute("class", "book-cont")
 
         name.innerText = library[position].name
         author.innerText = library[position].author
         pages.innerText = library[position].pages
         readS.innerText = library[position].read
-
-
+        
+  
+        // readStatus.appendChild(readS)
+        // readStatus.appendChild(readS2)
+    
         book.appendChild(name)
         book.appendChild(author)
         book.appendChild(pages)
         book.appendChild(readS)
-        bookCont.appendChild(book)
+        // book.appendChild(readStatus)
+        bookGrid.appendChild(book)
 
 }
 
@@ -83,10 +114,17 @@ addBtn.onclick = (e) => {
     position+=1
     formCont.style.display = "none"
     libheader.style.backgroundColor = "white"
+    formBtn.style.backgroundColor = "whitesmoke"
     mainCont.style.backgroundColor = "whitesmoke"
-
+  
+    
+  let children = Array.from(bookGrid.children)
+    children.forEach( element => {
+      element.classList.remove("bookModalClass")
+      element.classList.add("book-cont")
+    })
+  
     //Prevents the page from reloading after this button is clicked
     e.preventDefault()
 }
-
 

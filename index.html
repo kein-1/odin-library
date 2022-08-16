@@ -12,25 +12,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles.css">
         <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600;700&display=swap" rel="stylesheet">
+      <script src="https://kit.fontawesome.com/1cd1eb15e6.js" crossorigin="anonymous"></script>
+
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div class="library-header" id="library-header">
-            <h1>Library of Manga & Manhwa</h1>
+          <i id = "book-icon" class="fa-solid fa-book fa-xl"></i>
+          <h1>Library of Manga & Manhwa</h1>
         </div>
 
         <!-- <div class="form-btn">
             <button id="form-btn">Add a Book</button>
         </div> -->
-
         <div class="main-cont" id="main-cont">
             <div class="form-btn">
+                <i class="fa-solid fa-plus"></i>
                 <button class= "add-book-btn" id="form-btn">Add a Book</button>
             </div>
             <div class="book-grid" id="book-grid">
-
+            
             </div>
         </div>
 
@@ -40,24 +43,30 @@
 
 
         <div class="form-cont" id="form-cont">
-            <form class="form-box" action=""  id="form" onsubmit="return false">
+            <form class="form-box" action="" id="form" method="POST">
                 <h2>Add a new Book</h2>
-                <label for="name"></label>
-                <input type="text" id="name" placeholder="Enter Book Name">
 
-                <label for="author"></label>
-                <input type="text" id="author" placeholder="Enter Book Author">
+                <!--    omitted "label" tags because i am using palceholder -->
+                <input class="inputBox" type="text" id="name" placeholder="Enter Book Name" required/>
 
-                <label for="pages"></label>
-                <input type="number" id = "pages" placeholder="Enter how many pages read">
+                <input class="inputBox" type="text" id="author" placeholder="Enter Book Author" required/>
 
+                <input class="inputBox" type="number" id ="pages" placeholder="Enter how many pages read" required/>
                 <div class="read-status">
                     <label for="read-status" >Have you read it?</label>
-                    <input type="radio" class="radio-btn" id="read-status">
+                    <input type="checkbox" id="toggle" class="checkbox"/>
+                    <label for="toggle" class="switch"></label>
                 </div>
-                <button id="addBtn">Add to Library</button>
+                <i class="fa-solid fa-plus">
+                    <button id="addBtn" class="add-book-btn2" type="submit">Add to Library</button>
+                </i>
             </form>
         </div>
         <script src="index.js" async defer></script>
     </body>
 </html>
+
+
+
+
+                

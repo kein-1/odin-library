@@ -8,29 +8,42 @@ body{
 }
 
 h1{
-    font-size: 2rem;
+    font-size: 1.75rem;
 }
 
 h4{
     font-size: 1rem;
 }
 
-label{
+/* label{
     width: auto;
-}
+} */
 
 .library-header{
-    text-align: left;
+    display: flex;
+/*     text-align: left; */
+    align-items: center;
     padding: 10px;
     background-color: white;
     padding-left: 300px;
+    gap: 15px;
+}
+
+
+.libraryModal{
+    background-color: rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    padding-left: 300px;
+    gap: 15px;
 }
 
 .main-cont{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 50px 300px;
+    padding: 2vh 20vw;
     gap: 25px;
     background-color: whitesmoke;
     height:100%;
@@ -39,10 +52,18 @@ label{
 .form-btn{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .add-book-btn{
     border: none;
+    font-size: 1rem;
+}
+
+.add-book-btn2{
+    border: none;
+    font-size: 1rem;
+    background-color: white;
 }
 
 .book-grid{
@@ -80,25 +101,20 @@ label{
 .form-cont{
     display: none;
     position: absolute;
-    /* width: 300px;
-    height: 300px; */
     width: auto;
-    top: 200px;
-    left: 700px;
-    /* right: 400px; */
-    /* background-color: rgba(0, 0, 0, 0.7); */
+    height: auto;
+    top: 15vh;
+    left: 40vw;
     
 }
 
 .form-box{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: stretch;
     align-items: center;
     gap: 10px;
     padding: 25px;
-    /* border: 1px solid black; */
-    /* opacity: 1 !important; */
     background-color: white;
     width: 300px;
     box-sizing: border-box;
@@ -108,6 +124,7 @@ label{
 .read-status{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
 } 
 
@@ -116,15 +133,70 @@ label{
     width: 20px;
 }
 
-input {
-    display: inline;
-    width: 100%;
-    border-radius: 10px;
-    padding: 5px;
+.inputBox{
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
 }
 
-label {
-    /* display: inline; */
-    width: 100%;
+.checkbox{
+  display: none;
 }
 
+.switch{
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  border-radius:20px;
+  background-color:lightgray;
+}
+
+.switch::after{
+  position: absolute;
+  content:"";
+  width:19px;
+  height:19px;
+  background-color:white;
+  border-radius:50%;
+  top:1px;
+  left:1px;
+}
+.checkbox:checked + .switch{
+  background-color: green;
+}
+
+.checkbox:checked + .switch::after{
+  background-color: white;
+  left: 20px;
+}
+
+.bookModalClass{
+    color: rgba(0,0,0,0.1);
+    border: rgba(0,0,0,0.1);
+    text-align: center;
+    border-radius: 15px;
+    background-color: rgba(0,0,0,0.1);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.38);
+}
+
+
+@media screen and (max-width:900px){
+    .library-header{
+        padding-left: 4vh;
+    }
+
+    .form-cont{
+        
+        /* width: 300px;
+        height: 300px; */
+
+        top: 10vh;
+        left: 25vw;
+        /* right: 400px; */
+        /* background-color: rgba(0, 0, 0, 0.7); */
+    }
+    .main-cont{
+        padding: 2vh 10vw;
+    }
+}
