@@ -2,7 +2,6 @@ const libheader = document.getElementById("library-header")
 const formBtn = document.getElementById("form-btn")
 const formCont = document.getElementById("form-cont")
 const addBtn = document.getElementById("addBtn")
-
 const formBox = document.getElementById("form")
 
 const mainCont = document.getElementById("main-cont")
@@ -20,9 +19,10 @@ const modalColors2 = "rgba(0,0,0,0.75)"
 
 let library = []
 let position = 0
+let id = 0
 
 class Book {
-    constructor(name, author, pages, read = "false") {
+    constructor(name, author, pages, read) {
         this.name = name
         this.author = author
         this.pages = pages
@@ -53,65 +53,78 @@ formBtn.onclick = () => {
     // })
     
 }
+// function deleteItem() {
 
-function display() {
+// }
+
+
+function display(mainBook) {
     
     
         let book = document.createElement("div")
         let name = document.createElement("h3")
         let author = document.createElement("h3")
         let pages  = document.createElement("h3")
-        // let readStatus  = document.createElement("div")
         let readS = document.createElement("h3")
-        
-        // This is to add toggle button to our grid item 
-        // let readS = document.createElement("input")
-        // let readS2 = document.createElement("label")
+        let removeBtn = document.createElement("button")
         
         
-        // readStatus.setAttribute("class", "read-status")
-        // readS.setAttribute("class", "switch")
-        // readS2.setAttribute("class", "checkbox")
         
         book.setAttribute("class", "book-cont")
 
-        name.innerText = library[position].name
-        author.innerText = library[position].author
-        pages.innerText = library[position].pages
-        readS.innerText = library[position].read
-        
+        removeBtn.setAttribute("class", "removeBtn")
+        removeBtn.innerText="Remove"
+        removeBtn.addEventListener("click", (e) => {
+            // console.log(e.target.parentNode.getAttribute("value"))
+            // let bookContVal = e.target.parentNode.getAttribute("value")
+            let element = e.target.parentNode
+            element.remove()
+            // library.splice(Number(bookContVal),1)
+            library.forEach(element => console.log(element))
+
+        })
+
+        // name.innerText =  `"${library[position].name}"`
+        // author.innerText = library[position].author
+        // pages.innerText = library[position].pages
+        // readS.innerText = library[position].read
+        name.innerText =  `"${mainBook.name}"`
+        author.innerText = mainBook.author
+        pages.innerText = mainBook.pages
+        readS.innerText = mainBook.read
   
-        // readStatus.appendChild(readS)
-        // readStatus.appendChild(readS2)
     
         book.appendChild(name)
         book.appendChild(author)
         book.appendChild(pages)
         book.appendChild(readS)
-        // book.appendChild(readStatus)
+        book.appendChild(removeBtn)
+
         bookGrid.appendChild(book)
 
 }
+
+
+
 
 addBtn.onclick = (e) => {
     
     // Create new class Book. Then push book to our array
     // Then run our display function based on the index we are at
+    let readItem;
+    (readStatus.checked === true) ? readItem = "Read" : readItem = "Not Read"
 
-
-    let book = new Book(bookName.value, author.value, pages.value,readStatus.checked)
+    let book = new Book(bookName.value, author.value, pages.value, readItem)
     library.push(book)
-    display()
+    display(book)
     
     // A form function which resets the values in the form 
     formBox.reset()
     
     //For debugging 
     library.forEach(element => console.log(element))
-    console.log(`Current size of library is ${library.length}. We are at position ${position}`)
     
     //Moves our pointer ahead in our array 
-    position+=1
     formCont.style.display = "none"
     libheader.style.backgroundColor = "white"
     formBtn.style.backgroundColor = "whitesmoke"
