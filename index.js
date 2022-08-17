@@ -6,12 +6,17 @@ const formBox = document.getElementById("form")
 
 const mainCont = document.getElementById("main-cont")
 const bookGrid = document.getElementById("book-grid")
-const bookCont = Array.from(document.getElementsByClassName("book-cont"))
+// const bookCont = Array.from(document.getElementsByClassName("book-cont"))
 
 const bookName = document.getElementById("name")
 const author = document.getElementById("author")
 const pages = document.getElementById("pages")
 const readStatus = document.getElementById("toggle")
+
+const wrapper = document.getElementById("toggle")
+
+
+
 
 const modalColors = "rgba(0,0,0,0.1)"
 const modalColors2 = "rgba(0,0,0,0.75)"
@@ -36,26 +41,21 @@ class Book {
 
 formBtn.onclick = () => {
     formCont.style.display = "flex"
+    
     libheader.style.backgroundColor = modalColors2
     mainCont.style.backgroundColor = modalColors2
     formBtn.style.backgroundColor = modalColors
     let children = Array.from(bookGrid.children)
-        children.forEach( element => {
-        element.classList.add("bookModalClass")
-        element.classList.remove("book-cont")
-    })
     
+    children.forEach( element => {
+      element.classList.add("bookModalClass")
+      element.classList.remove("book-cont")
+      element.lastChild.style.color = modalColors2
+      element.lastChild.style.backgroundColor = modalColors
 
-  // const bookCont = Array.from(document.getElementsByClassName("book-cont"))
-    // bookCont.forEach(element => {
-    //   console.log("THIS RAN")
-    //   element.style.backgroundColor = "rgba(0,0,0,0.75)"
-    // })
-    
+    })  
 }
-// function deleteItem() {
 
-// }
 
 
 function display(mainBook) {
@@ -126,18 +126,20 @@ addBtn.onclick = (e) => {
     
     //Moves our pointer ahead in our array 
     formCont.style.display = "none"
-    libheader.style.backgroundColor = "white"
+    libheader.style.backgroundColor = "whitesmoke"
     formBtn.style.backgroundColor = "whitesmoke"
-    mainCont.style.backgroundColor = "whitesmoke"
+    mainCont.style.backgroundColor = "white"
   
     
   let children = Array.from(bookGrid.children)
     children.forEach( element => {
       element.classList.remove("bookModalClass")
       element.classList.add("book-cont")
+      element.lastChild.style.color = "purple"
+      element.lastChild.style.backgroundColor = "white"
+
     })
   
     //Prevents the page from reloading after this button is clicked
     e.preventDefault()
 }
-
